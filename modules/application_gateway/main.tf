@@ -23,6 +23,11 @@ resource "azurerm_application_gateway" "this" {
     max_capacity = 2
   }
 
+  ssl_policy {
+    policy_type = "Predefined"
+    policy_name = "AppGwSslPolicy20220101"
+  }
+
   identity {
     type         = "UserAssigned"
     identity_ids = [var.user_assigned_identity_id]
@@ -77,6 +82,7 @@ resource "azurerm_application_gateway" "this" {
     interval            = 30
     timeout             = 30
     unhealthy_threshold = 3
+    host                = "127.0.0.1"
   }
 
   request_routing_rule {

@@ -2,7 +2,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
   name                = "vmss-${var.name_prefix}"
   location            = var.location
   resource_group_name = var.resource_group_name
-  sku                 = "Standard_B2s"
+  sku                 = "Standard_D2s_v3"
   instances           = 2
   admin_username      = var.admin_username
   tags                = var.tags
